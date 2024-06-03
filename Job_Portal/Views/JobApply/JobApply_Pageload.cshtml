@@ -1,0 +1,90 @@
+﻿@model Job_Portal.Models.ApplyJob
+@{
+    ViewBag.Title = "JobApply_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="text-align: center"><u>Apply Jobs</u></h1>
+<div>
+    @using (Html.BeginForm("JobApply_Click", "JobApply", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        foreach (var item in Model.selectjob)
+        {
+            <div>
+                <label>Title:</label>
+                @Html.DisplayFor(modelItem => item.Title)
+            </div>
+            <br />
+            <div>
+                <label>Posted Date:</label>
+                @Html.DisplayFor(modelItem => item.Date)
+            </div>
+            <br />
+            <div>
+                <label>Description:</label>
+                @Html.DisplayFor(modelItem => item.Description)
+            </div>
+            <br />
+            <div>
+                <label>Resume:</label>
+                @Html.TextBox("file", "", new { Type = "file" })
+                @Html.ValidationMessageFor(m => m.Resume)
+            </div>
+            <br />
+        }
+        <div>
+            <input type="submit" value="Apply" />
+            @Html.DisplayFor(m => m.message)
+        </div>
+
+        @*<table class="table" border="1">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(m => m.JobInsert.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.JobInsert.Date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.JobInsert.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.Resume)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.JobInsert.Status)
+                    </th>
+                </tr>
+                @foreach (var item in Model.selectjob)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.TextBox("file", "", new { Type = "file" })
+                        </td>
+                        <td>
+                            <input type="submit" value="Apply" />
+                           @Html.DisplayFor(m => m.message)
+                        </td>
+                    </tr>
+                    <tr>
+                            <td colspan="5" style="font-size:12px;text-align:center">
+                                @Html.DisplayFor(m => m.message)
+                            </td>
+                        </tr>
+                }
+            </table>*@
+    }
+    <div>
+        @Html.ActionLink("Go Back", "AdminHome", "Login")
+    </div>
+</div>
+

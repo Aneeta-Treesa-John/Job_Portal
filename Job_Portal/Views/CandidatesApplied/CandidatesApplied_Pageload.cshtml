@@ -1,0 +1,78 @@
+﻿@model Job_Portal.Models.CandidatesApplied
+@{
+    ViewBag.Title = "CandidatesApplied_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align:center"><u>Candidates Applied</u></h2>
+<div>
+    @using (Html.BeginForm("CandidatesApplied_Pageload", "CandidatesApplied", FormMethod.Get))
+    {
+        <table class="table" border="1">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(m => m.JobInsert.Job_Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.JobInsert.Job_Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.JobInsert.Job_Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.JobInsert.Job_Vacancy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.JobInsert.Job_Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.JobInsert.User_Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.JobInsert.Resume)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.JobInsert.Date)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(m => m.JobInsert.Job_Status)
+                </th>*@
+            </tr>
+            @foreach (var item in Model.selectjob)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Job_Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Job_Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Job_Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Job_Vacancy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Job_Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User_Id)
+                    </td>
+                    <td>
+                        <a download href="@Html.DisplayFor(modelItem => item.Resume.Split('~')[1])">Candidate Resume</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Job_Status)
+                    </td>*@
+                </tr>
+            }
+        </table>
+    }
+    <div>
+        @Html.ActionLink("Go Back", "AdminHome", "Login")
+    </div>
+</div>

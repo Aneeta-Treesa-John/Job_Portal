@@ -1,0 +1,54 @@
+﻿@model Job_Portal.Models.AppliedJobs
+@{
+    ViewBag.Title = "AppliedJobs_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align:center"><u>Job Applied</u></h2>
+<div>
+    @using (Html.BeginForm("AppliedJobs_Pageload", "AppliedJob", FormMethod.Get))
+    {
+        <table class="table" border="1">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(m => m.JobInsert.Job_Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.JobInsert.Job_Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.JobInsert.Job_Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.JobInsert.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.JobInsert.Status)
+                </th>
+            </tr>
+            @foreach (var item in Model.selectjob)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Job_Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Job_Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Job_Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    <div>
+        @Html.ActionLink("Go Back", "UserHome", "Login")
+    </div>
+</div>

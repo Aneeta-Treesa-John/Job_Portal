@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Job_Portal.Applied_Tab>
+@{
+    ViewBag.Title = "JobApplied_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align:center"><u>Job Applied</u></h2>
+<div>
+    @using (Html.BeginForm("JobList_Pageload", "JobList", FormMethod.Get))
+    {
+        <table class="table" border="1">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(m => m.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.Resume)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.Status)
+                </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Resume)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+</div>
+

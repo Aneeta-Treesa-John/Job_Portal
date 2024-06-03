@@ -1,0 +1,96 @@
+﻿@model Job_Portal.Models.Searchjob
+@{
+    ViewBag.Title = "JobSearch_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="text-align: center"><u>Job List</u></h1>
+<div>
+    @using (Html.BeginForm("JobSearch_Click", "JobSearch", FormMethod.Post))
+    {
+        <nav>
+            <form>
+                <h4>Search by</h4>
+                <div style="padding:5px">
+                    <label>Name of Post:</label>
+                    @Html.TextBox("clsobj.jsearch.title")
+                    <label>Qualification & Skills:</label>
+                    @Html.TextBox("clsobj.jsearch.description")
+                    <label>Type of Job:</label>
+                    @Html.TextBox("clsobj.jsearch.type")
+                    <input type="submit" value="Search" />
+                </div>
+            </form>
+        </nav>
+
+        <table class="table" border="1">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(m => m.jsearch.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.jsearch.Vacancy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.jsearch.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.jsearch.Salary)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.jsearch.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.jsearch.Website)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.jsearch.Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.jsearch.Status)
+                </th>
+            </tr>
+            @if(Model.selectjob.Count > 0){
+            foreach (var item in Model.selectjob)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)  
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vacancy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Salary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Website)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Apply Now", "JobApply_Pageload", "JobApply", new { id = item.job_id },null)
+                    </td>
+                </tr>
+            }}
+            else{
+                <tr>
+                    <td colspan="8" style="font-size:14px;text-align:center" >
+                        No results found!
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+
+    <div>
+        @Html.ActionLink("Go Back", "UserHome", "Login")
+    </div>
+</div>

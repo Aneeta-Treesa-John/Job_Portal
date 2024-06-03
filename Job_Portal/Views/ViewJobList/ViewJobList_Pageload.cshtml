@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Job_Portal.sp_check_Result>
+@{
+    ViewBag.Title = "ViewJobList_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="text-align: center"><u>Job List</u></h1>
+<div>
+    @using (Html.BeginForm("ViewJobList_Click", "ViewJobList",FormMethod.Get))
+    {
+    <nav>
+        <form>
+            <h4>Search by</h4>
+            <div style="padding:5px">
+                <label>Job Title:</label>
+                @Html.TextBox("Job_Title")
+                <label>Job Type:</label>
+                @Html.TextBox("Job_Type")
+                <label>Job Status:</label>
+                @Html.TextBox("Job_Status")
+                <input type="submit" value="Search" />
+            </div>
+        </form>
+    </nav>
+ 
+    <table class="table" border="1">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(m => m.Job_Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Job_Vacancy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Job_Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Job_Salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Job_Posted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Job_Website)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Job_Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Job_Status)
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Job_Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Job_Vacancy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Job_Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Job_Salary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Job_Posted)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Job_Website)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Job_Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Job_Status)
+                </td>
+            </tr>
+        }
+    </table>
+    }
+</div>

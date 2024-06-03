@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Job_Portal.sp_joblist_Result>
+@{
+    ViewBag.Title = "JobList_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align:center"><u>Reported Vacancies</u></h2>
+<div>
+    @using (Html.BeginForm("JobList_Pageload", "JobList", FormMethod.Get))
+    {
+        <table class="table" border="1">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(m => m.Job_Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.Job_Vacancy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.Job_Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.Job_Posted)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.Job_Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.Job_Status)
+                </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Job_Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Job_Vacancy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Job_Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Job_Posted)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Job_Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Job_Status)
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    <div>
+        @Html.ActionLink("Go Back", "AdminHome", "Login")
+    </div>
+</div>

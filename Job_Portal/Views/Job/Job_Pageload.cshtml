@@ -1,0 +1,49 @@
+﻿@model Job_Portal.Models.JobInsert
+
+@{
+    ViewBag.Title = "Job_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2><u>Post Job</u></h2>
+
+<div>
+    @using (Html.BeginForm("Job_Click", "Job", FormMethod.Post))
+    {
+        <div>
+            <label>Job Title:</label>
+            @Html.TextBoxFor(m => m.title)
+            @Html.ValidationMessageFor(m => m.title)
+        </div>
+        <div>
+            <label>Vacancy:</label>
+            @Html.TextBoxFor(m => m.vacancy)
+            @Html.ValidationMessageFor(m => m.vacancy)
+        </div>
+        <div>
+            <label>Description:</label>
+            @Html.TextAreaFor(m => m.description)
+            @Html.ValidationMessageFor(m => m.description)
+        </div>
+        <div>
+            <label>Salary:</label>
+            @Html.TextBoxFor(m => m.salary)
+            @Html.ValidationMessageFor(m => m.salary)
+        </div>
+        <div>
+            <label>Website:</label>
+            @Html.TextAreaFor(m => m.website)
+            @Html.ValidationMessageFor(m => m.website)
+        </div>
+        <div>
+            <label>Type:</label>
+            @Html.TextAreaFor(m => m.type)
+            @Html.ValidationMessageFor(m => m.type)
+        </div>
+        <div>
+            <input type="submit" value="Insert" />
+            @Html.DisplayFor(m => m.message)
+        </div>
+    }
+</div>
+

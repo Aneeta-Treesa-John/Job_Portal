@@ -1,0 +1,19 @@
+﻿@model Job_Portal.Models.Login
+@{
+    ViewBag.Title = "AdminHome";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Home</h2>
+
+<div>
+    @Html.ActionLink("Report Vacancies", "Job_Pageload", "Job")
+</div>
+
+<div>
+    @Html.ActionLink("View reported Vacancies", "JobList_Pageload", "JobList")
+</div>
+
+<div>
+    @Html.ActionLink("Candidates Applied", "CandidatesApplied_Pageload", "CandidatesApplied")
+</div>

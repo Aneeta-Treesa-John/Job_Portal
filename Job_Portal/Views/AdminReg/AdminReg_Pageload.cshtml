@@ -1,0 +1,60 @@
+﻿@model Job_Portal.Models.AdminReg
+@{
+    ViewBag.Title = "AdminReg_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Registration Form</h2>
+<div>
+    @using (Html.BeginForm("AdminReg_Click", "AdminReg", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            <label>Name:</label>
+            @Html.TextBoxFor(m => m.name)
+            @Html.ValidationMessageFor(m => m.name)
+        </div>
+        <div>
+            <label>Email:</label>
+            @Html.TextBoxFor(m => m.email)
+            @Html.ValidationMessageFor(m => m.email)
+        </div>
+        <div>
+            <label>Website:</label>
+            @Html.TextBoxFor(m => m.website)
+            @Html.ValidationMessageFor(m => m.website)
+        </div>
+        <div>
+            <label>Address:</label>
+            @Html.TextAreaFor(m => m.address)
+            @Html.ValidationMessageFor(m => m.address)
+        </div>
+        <div>
+            <label>Phone Number:</label>
+            @Html.TextBoxFor(m => m.phone)
+            @*@Html.ValidationMessageFor(m => m.phone)*@
+        </div>
+        <div>
+            <label>Logo:</label>
+            @Html.TextBox("file", "", new { Type = "file" })
+        </div>
+        <div>
+            <label>Username:</label>
+            @Html.TextBoxFor(m => m.username)
+            @Html.ValidationMessageFor(m => m.username)
+        </div>
+        <div>
+            <label>Password:</label>
+            @Html.PasswordFor(m => m.password)
+        </div>
+        <div>
+            <label>Confirm Password:</label>
+            @Html.PasswordFor(m => m.confirmpassword)
+            @Html.ValidationMessageFor(m => m.confirmpassword)
+        </div>
+        <div>
+            <input type="submit" value="Insert" />
+            @Html.DisplayFor(m => m.message)
+        </div>
+    }
+</div>
+
